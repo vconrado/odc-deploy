@@ -1,0 +1,78 @@
+source_type: ls8_level1_usgs
+output_type: ls8_level1_epsg4326
+
+description: Landsat 8 LEVEL 1, WGS 84 (EPSG:4326)
+
+location: '/datacube/USGS/Landsat/L8_ingested/ls8_level1_epsg4326/'
+file_path_template: '/data/ls8_level1_epsg4326_{tile_index[0]}_{tile_index[1]}_{start_time}.nc'
+global_attributes:
+  title: Landsat 8 USGS Level 1 Collection (EPSG:4326)
+  summary: Landsat 8 USGS Level 1 Collection-1 OLI-TIRS
+  source: 
+  institution: INPE
+  instrument: OLI_TIRS
+  cdm_data_type: Grid
+  keywords: INPE,NASA/GSFC/SED/ESD/LANDSAT,REFLECTANCE,ETM+,TM,OLI,EARTH SCIENCE
+  keywords_vocabulary: GCMD
+  platform: LANDSAT-8
+  processing_level: L2
+  product_version: '2.0.0'
+  product_suite: USGS Landsat
+  project: INPE
+  coverage_content_type: physicalMeasurement
+  naming_authority: gov.usgs
+  acknowledgment: Landsat data is provided by the United States Geological Survey (USGS).
+
+storage:
+  driver: NetCDF CF
+
+  crs: EPSG:4326
+  tile_size:
+          longitude: 0.943231048326
+          latitude: 0.943231048326
+  resolution:
+          longitude: 0.000269494585236
+          latitude: -0.000269494585236
+  chunking:
+      longitude: 200
+      latitude: 200
+      time: 1
+  dimension_order: ['time', 'latitude', 'longitude']
+
+measurements:
+    - name: coastal_aerosol
+      dtype: int16
+      nodata: -9999
+      resampling_method: nearest
+      src_varname: 'coastal_aerosol'
+      zlib: True
+      attrs:
+          long_name: "Coastal Aerosol (0.43-0.45 microns)"
+          alias: "band_1"
+    - name: blue
+      dtype: int16
+      nodata: -9999
+      resampling_method: nearest
+      src_varname: 'blue'
+      zlib: True
+      attrs:
+          long_name: "Blue (0.45-0.51) microns"
+          alias: "band_2"
+    - name: green
+      dtype: int16
+      nodata: -9999
+      resampling_method: nearest
+      src_varname: 'green'
+      zlib: True
+      attrs:
+          long_name: "Green (0.53-0.59 microns)"
+          alias: "band_3"
+    - name: red
+      dtype: int16
+      nodata: -9999
+      resampling_method: nearest
+      src_varname: 'red'
+      zlib: True
+      attrs:
+          long_name: "Red (0.64-0.67)"
+          alias: "band_4"
